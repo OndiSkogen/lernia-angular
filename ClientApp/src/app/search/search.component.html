@@ -1,0 +1,8 @@
+<input type="search" [(ngModel)]="searchTerm" placeholder="sök" (keyup.enter)='getStations()' id="s1">
+<button (click)='getStations()'>Sök</button>
+<p>
+  {{searchTerm}}
+</p>
+<ul *ngIf="StopLocation">
+  <li *ngFor="let item of StopLocation">{{item.name}}</li>
+</ul>
