@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-search',
@@ -9,22 +10,12 @@ import { HttpClient } from '@angular/common/http';
 export class SearchComponent implements OnInit {
 
   private searchTerm = '';
-  private StopLocation: any[];
 
-  getStations(): void {
-    this.http.get<any>('api/search/' + this.searchTerm).subscribe(data => {
-      console.log(data);
-      this.StopLocation = data.StopLocation;
-    });
+  searchStations(): void {
+    this.apiService.searchStations(this.searchTerm);
   }
-  // getStationsLocally(): void {
-  //   this.http.get('api/searchlocal').subscribe(data => {
-  //     console.log(data);
-  //     this.StopLocation = data;
-  //   });
-  // }
 
-  constructor(private http: HttpClient) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
   }
