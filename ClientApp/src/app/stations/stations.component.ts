@@ -9,6 +9,11 @@ import { ApiService } from '../api.service';
 export class StationsComponent implements OnInit {
 
   private stations;
+  private stop;
+
+  searchStops(): void {
+    this.apiService.searchStops(this.stop);
+  }
 
   constructor(private apiService: ApiService) { }
 

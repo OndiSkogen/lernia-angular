@@ -18,5 +18,13 @@ export class ApiService {
     });
   }
 
+  searchStops(searchTerm: string): void {
+    this.http.get<any>('api/tablesearch/' + searchTerm).subscribe(data => {
+      console.log(data);
+      this.StopLocation = data.StopLocation;
+      this.change.emit(this.StopLocation);
+    });
+  }
+
   constructor(private http: HttpClient) { }
 }
